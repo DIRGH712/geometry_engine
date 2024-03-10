@@ -36,7 +36,7 @@ Replace `your_jwt_secret_key_here` with a strong, unique secret key.
 ### Step 3: Install Dependencies
 - Ensure your virtual environment is activated, then install the project dependencies:
   ```bash
-  JWT_SECRET_KEY= "your_jwt_secret_key_here"
+  pip install -r requirements.txt
 
 ### Step 4: Configure the Application
 1. Set the Flask application environment variable to point to your application's entry file. This tells Flask where to find your application.
