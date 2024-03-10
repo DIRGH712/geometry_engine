@@ -110,6 +110,23 @@ However, recognizing the potential for optimization, a common approach involves 
 - Perform PCA(Principal Component Analysis) on the set of points to find the principal axes. This can help us get more optimized bounding box.
 - Align the points with these axes.
 - Compute the bounding box in this aligned configuration for a rough (not necessarily minimal) estimate.
-- For the minimal volume box, iterate over all possible orientations (this requires discretizing the rotation space and is computationally expensive), compute the axis-aligned - -- bounding box for the points in each orientation, and find the one with the smallest volume.
+- For the minimal volume box, iterate over all possible orientations (this requires discretizing the rotation space and is computationally expensive), compute the axis-aligned bounding box for the points in each orientation, and find the one with the smallest volume.
+
+# References:
+
+Feel free to review some resources I used to make this project.
+
+- [Convex Hull | Basics | Lecture-1](https://www.youtube.com/watch?v=HojzdCICjmQ)
+- [Arbitrarily Oriented Minimum Bounding Box - A Demo ](https://www.youtube.com/watch?v=Ze6lppsly2U)
+- [Wiki: Minimum_bounding Box](https://en.wikipedia.org/wiki/Minimum_bounding_box)
+- [Book: Computational-Geometry-Algorithms-and-Applications-3rd-Ed](https://erickimphotography.com/blog/wp-content/uploads/2018/09/Computational-Geometry-Algorithms-and-Applications-3rd-Ed.pdf)
+- [Some random post](https://discourse.mcneel.com/t/minimum-oriented-bounding-box-implementation-in-grasshopper-python-script-node/64344)
+- Khan Academy
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/)
+- [StackOverflow](https://stackoverflow.com/questions/471962/how-do-i-efficiently-determine-if-a-polygon-is-convex-non-convex-or-complex/472001#472001)
+
+
+
+
 
 
