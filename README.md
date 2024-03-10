@@ -1,3 +1,13 @@
+# Running the Test Cases
+A suite of unit tests has been provided to ensure that the geometry engine operates correctly. Follow these steps to run the test cases on your local machine:
+- Python’s `unittest` framework provides a feature for automatic discovery of test cases. To use this feature and run all tests, navigate to the root directory of the project where the tests directory is located.
+- **Execute:**
+   ```bash
+    python -m unittest discover -s tests
+- If you wish to run a specific test file, use the following command, replacing <test_file>.py with the name of the test file:
+   ```bash
+    python -m unittest tests/<test_file>.py
+   
 # Endpoints
 NOTE: Change _http://127.0.0.1:5000_ based on your Flask app <br>
 ### 1. Compute Bounding Box
