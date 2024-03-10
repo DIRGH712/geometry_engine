@@ -1,10 +1,11 @@
-# Getting Started
+# Getting Started [The Standard Way]
 Before importing this project to your Python workspace, it is necessary to make sure the prerequisite steps are properly done in your development environment.
 
 ### Step 1: Clone the GitHub Repository
 1. Open your terminal or command prompt.
 2. Navigate to the directory where you want to clone the repository.
 3. Use the command
+   
    ```bash
    git clone https://github.com/DIRGH712/geometry_engine.git
 5. Navigate into the cloned repository directory with cd `<repository-name>`.
@@ -22,6 +23,21 @@ Before importing this project to your Python workspace, it is necessary to make 
 ### Step 4: Running the Application
 1. Set the FLASK_APP environment variable to your application entry file, for example, export FLASK_APP=app.py on macOS/Linux or set FLASK_APP=app.py on Windows, where app.py is the file that initializes your Flask application.
 2. Run the application with flask run. This command will start the Flask development server and make your application accessible at http://127.0.0.1:5000/ by default.
+
+# Getting Started [The Docker Way!! - Bonus]
+
+- Open terminal
+- Pull and use Docker image by running:
+  
+   ```bash
+   docker pull pateldirgh/my-flask-app
+- Run the docker container using the given command, also if host:5000 doesn't work change the port to anything but 5000, I faced the same issue because macOS using port 5000 for AirPlay Receiver, or stop OS service from setting->general:
+
+   ```bash
+  docker run -p 5000:5000 pateldirgh/my-flask-app
+- Copy and paste `http://127.0.0.1:5000` into the browser to check index.html, change port 5000 if needed.
+- Use Postman to or cURL Commands to test other APIs, and don't forget to authenticate.
+- Press `CTRL+C` to quit
 
 # Project Components
 - The routes used in this application can be found at `./modules/` which computes appropriate responses for requests made
@@ -69,7 +85,7 @@ Follow these steps to run the test cases on your local machine:
 **NOTE:** Postman can also be used for testing the following API's <br> 
 **NOTE:** Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and paste your URL, to view simple index.html <be>
 
-### 0. Login
+### 0. Login [Bonus]
 - **Endpoint:** `/login`
 - **Method:** POST
 - **Description:** Returns a valid Access Token which can be used to authenticate every user request with an expiration limit of 30 mins. (Used JWT, and have handled all cases: Invalid, Empty, Expired Token)
