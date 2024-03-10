@@ -86,3 +86,30 @@ NOTE: Change _http://127.0.0.1:5000_ based on your Flask app <br>
     "vertices": [[0.111, 0.222, 0.333], [2.444, 0.555, 0.666], [0.777, 2.888, 0.999], [0.101, 0.202, 0.303]],
     "precision": 2
   }'
+
+
+# Implementation Choices and additional notes
+
+## For Computing the smallest Bounding Box
+In developing the geometric calculation endpoint, I initiated with the `compute_bounding_box` method, focusing on delivering a robust and straightforward solution for calculating the Axis-Aligned Bounding Box (AABB) for a given set of 3D points. This choice was made by several considerations, emphasizing the importance of efficiency, simplicity, and reliability in software engineering practices.
+
+**Initial Choice Rationale:**
+
+1. **Efficiency & Performance:** The AABB approach, by its nature, offers computational efficiency. It requires minimal processing - essentially, calculating the minimum and maximum values along each axis. This ensures that the endpoint can handle large datasets and perform calculations swiftly, a vital feature for scalable systems.
+
+2. **Simplicity & Maintainability:** Adopting the AABB method allowed me to implement a straightforward and easily understandable algorithm. This simplicity not only accelerates development but also enhances maintainability. It’s a strategy that ensures future developers, or even future me, can quickly grasp and iterate on the existing codebase without a steep learning curve.
+
+3. **Broad Applicability:** Given the wide usage of AABB in various domains, such as computer graphics and collision detection, starting with a universally accepted and straightforward approach ensures the endpoint has a broad range of applicability right out of the gate.
+
+However, recognizing the potential for optimization, a common approach involves computing the convex hull of the set of points and then finding the minimum bounding box of this convex hull. Checkout `optimized_bounding_box.py` in `modules` directory.
+
+**Implementation:**
+
+- Compute the Convex Hull, I learned QuickHull and Gift wrapping algo.
+- To find the smallest bounding box, you can use the concept of an oriented bounding box (OBB). An OBB is not axis-aligned, meaning it can have any orientation in space. The OBB that has the minimum volume and contains the convex hull is the solution.
+- Perform PCA(Principal Component Analysis) on the set of points to find the principal axes. This can help us get more optimized bounding box.
+- Align the points with these axes.
+- Compute the bounding box in this aligned configuration for a rough (not necessarily minimal) estimate.
+- For the minimal volume box, iterate over all possible orientations (this requires discretizing the rotation space and is computationally expensive), compute the axis-aligned - -- bounding box for the points in each orientation, and find the one with the smallest volume.
+
+
