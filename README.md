@@ -9,7 +9,7 @@ A suite of unit tests has been provided to ensure that the geometry engine opera
     python -m unittest tests/<test_file>.py
    
 # Endpoints
-NOTE: Change _http://127.0.0.1:5000_ based on your Flask app <br>
+NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and paste your URL, to view simple index.html <br>
 ### 1. Compute Bounding Box
 - **Endpoint:** `/compute-bounding-box`
 - **Method:** POST
