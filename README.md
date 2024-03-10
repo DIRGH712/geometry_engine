@@ -41,7 +41,24 @@ Follow these steps to run the test cases on your local machine:
     python -m unittest tests/<test_file>.py
    
 # Endpoints
-NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and paste your URL, to view simple index.html <br>
+NOTE: Postman can also be used for testing the following API's <br> 
+NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and paste your URL, to view simple index.html <be>
+
+### 0. Login
+- **Endpoint:** `/login`
+- **Method:** POST
+- **Description:** Returns a valid Access Token which can be used to authenticate every user request with an expiration limit of 30 mins. (Used JWT, and have handled all cases: Invalid, Empty, Expired Token)
+- **Input:** JSON with username, password represented as `{"username": "root", "password": "root"}`.
+- **Output:** Access Token `{"access_token": "your_access_token"}`.
+- **Usage Example:**
+  ```bash
+  curl -X POST http://127.0.0.1:5000/login \
+   -H "Content-Type: application/json" \
+   -d '{
+     "username": "root",
+     "password": "root"
+   }'
+
 ### 1. Compute Bounding Box
 - **Endpoint:** `/compute-bounding-box`
 - **Method:** POST
@@ -52,6 +69,7 @@ NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and past
   ```bash
   curl -X POST http://127.0.0.1:5000/compute-bounding-box \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <Your_Token_Here>" \
   -d '{
     "points": [[0, 0, 0], [1, 1, 1]]
   }'
@@ -66,6 +84,7 @@ NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and past
   ```bash
   curl -X POST http://127.0.0.1:5000/rotate-mesh \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <Your_Token_Here>" \
   -d '{
     "mesh": [[1, 0, 0], [0, 1, 0], [0, 0, 1], [-1, 0, 0], [0, -1, 0], [0, 0, -1]],
     "angle": 30,
@@ -83,6 +102,7 @@ NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and past
   ```bash
   curl -X POST http://127.0.0.1:5000/move-mesh \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <Your_Token_Here>" \
   -d '{
     "mesh": [[0, 0, 0], [1, 1, 1], [2, 2, 2]],
     "x": 10,
@@ -100,6 +120,7 @@ NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and past
   ```bash
   curl -X POST http://127.0.0.1:5000/check-convexity \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <Your_Token_Here>" \
   -d '{
     "points": [[0, 0, 0], [2, 0, 0], [2, 2, 0], [0, 2, 0]]
     }'
@@ -114,6 +135,7 @@ NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and past
   ```bash
   curl -X POST http://127.0.0.1:5000/calculate-centroid \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <Your_Token_Here>" \
   -d '{
     "vertices": [[0.111, 0.222, 0.333], [2.444, 0.555, 0.666], [0.777, 2.888, 0.999], [0.101, 0.202, 0.303]],
     "precision": 2
