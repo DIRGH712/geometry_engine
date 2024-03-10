@@ -4,29 +4,54 @@ from modules.move_mesh import move_mesh
 from modules.check_convexity import is_convex_polygon
 from modules.get_centroid import calculate_centroid
 from modules.bounding_box import compute_bounding_box
-# from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+import os
+from datetime import timedelta
+from dotenv import load_dotenv
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+
+load_dotenv()  # This will load the environment variables from the .env file
 
 app = Flask(__name__)
-# app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # Change this to a random secret key
-# jwt = JWTManager(app)
+app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'default-secret-key')
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=30)
+jwt = JWTManager(app)
 
 
-# @app.route('/login', methods=['POST'])
-# def login():
-#     if not request.is_json:
-#         return jsonify({"msg": "Missing JSON in request"}), 400
-#
-#     username = request.json.get('username', None)
-#     password = request.json.get('password', None)
-#     if username != 'root' or password != 'root':  # Example user validation
-#         return jsonify({"msg": "Bad username or password"}), 401
-#
-#     # Create a new token with the user id inside
-#     access_token = create_access_token(identity=username)
-#     return jsonify(access_token=access_token)
+@jwt.invalid_token_loader
+def invalid_token_callback(callback):
+    # Invalid token, maybe not signed or tampered with
+    return jsonify({'error': 'Invalid token.'}), 401
+
+
+# Callback function to check if a token has expired
+@jwt.expired_token_loader
+def expired_token_callback(callback):
+    # Expired token, return error string with 401 status code
+    return jsonify({'error': 'Expired token.'}), 401
+
+
+# Callback function to check if a token is not present
+@jwt.unauthorized_loader
+def missing_token_callback(callback):
+    # No token, return error string with 401 status code
+    return jsonify({'error': 'Authorization header is missing.'}), 401
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.json.get('username', None)
+    password = request.json.get('password', None)
+
+    if username != "root" or password != "root":
+        return jsonify({"msg": "Bad username or password"}), 401
+
+    # Create JWT access token
+    access_token = create_access_token(identity=username, expires_delta=timedelta(minutes=30))
+    return jsonify(access_token=access_token)
 
 
 @app.route('/compute-bounding-box', methods=['POST'])
+@jwt_required()
 def compute_aabb_endpoint():
     data = request.get_json()
     points = data.get('points')
@@ -45,13 +70,13 @@ def compute_aabb_endpoint():
 
 
 @app.route('/rotate-mesh', methods=['POST'])
-# @jwt_required()
+@jwt_required()
 def rotate_mesh_endpoint():
     data = request.get_json()
     mesh = data.get('mesh')
     angle = data.get('angle')
     axis = data.get('axis')
-    precision = data.get('precision',2)
+    precision = data.get('precision', 2)
 
     if not all([mesh, angle, axis]):
         return jsonify({"error": "Missing data for mesh, angle, or axis"}), 400
@@ -64,6 +89,7 @@ def rotate_mesh_endpoint():
 
 
 @app.route('/move-mesh', methods=['POST'])
+@jwt_required()
 def move_mesh_endpoint():
     data = request.get_json()
     mesh = data.get('mesh')
@@ -82,7 +108,7 @@ def move_mesh_endpoint():
 
 
 @app.route('/check-convexity', methods=['POST'])
-
+@jwt_required()
 def check_convexity_endpoint():
     data = request.get_json()
     polygon = data.get('points')
@@ -97,8 +123,8 @@ def check_convexity_endpoint():
         return jsonify({"error": str(e)}), 500
 
 
-
 @app.route('/calculate-centroid', methods=['POST'])
+@jwt_required()
 def calculate_centroid_endpoint():
     data = request.get_json()
     vertices = data.get('vertices')
@@ -118,6 +144,6 @@ def calculate_centroid_endpoint():
 def index():
     return render_template('index.html')
 
+
 if __name__ == "__main__":
     app.run(debug=True)
-
