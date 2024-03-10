@@ -4,18 +4,18 @@ Before importing this project to your Python workspace, it is necessary to make 
 ### Step 1: Clone the GitHub Repository
 1. Open your terminal or command prompt.
 2. Navigate to the directory where you want to clone the repository.
-3. Use the command git clone <repository-url>. Replace <repository-url> with the URL of this GitHub repo.
-4. Navigate into the cloned repository directory with cd <repository-name>.
+3. Use the command `git clone <repository-url>`. Replace `<repository-url>` with the URL of this GitHub repo.
+4. Navigate into the cloned repository directory with cd `<repository-name>`.
 
 ### Step 2: Create a `.env` File for Environment Variables
-1. Within the root of your cloned repository, create a file named .env.
-2. Open the .env file in a text editor and add the following line: JWT_SECRET_KEY=your_jwt_secret_key_here. Replace your_jwt_secret_key_here with a strong, unique secret key.
-3. Save and close the .env file.
+1. Within the root of your cloned repository, create a file named `.env`.
+2. Open the `.env` file in a text editor and add the following line: JWT_SECRET_KEY=your_jwt_secret_key_here. Replace _your_jwt_secret_key_here_ with a strong, unique secret key.
+3. Save and close the `.env` file.
 4. If you provide a .env.example file as a template, make sure it contains JWT_SECRET_KEY=change_this_to_a_secure_key.
 
 ### Step 3: Install Dependencies
 1. Ensure you are in the root directory of the cloned repository.
-2. Run `pip install -r requirements.txt` to install all the necessary packages listed in the requirements.txt file.
+2. Run `pip install -r requirements.txt` to install all the necessary packages listed in the `requirements.txt` file.
 
 ### Step 4: Running the Application
 1. Set the FLASK_APP environment variable to your application entry file, for example, export FLASK_APP=app.py on macOS/Linux or set FLASK_APP=app.py on Windows, where app.py is the file that initializes your Flask application.
