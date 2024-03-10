@@ -3,26 +3,55 @@ Before importing this project to your Python workspace, it is necessary to make 
 
 ### Step 1: Clone the GitHub Repository
 1. Open your terminal or command prompt.
-2. Navigate to the directory where you want to clone the repository.
-3. Use the command
+2. Navigate to the directory where you want the project to be cloned. Use the cd command to change directories. For example:
+   ```bash
+   cd Documents/projects
+3. Clone the repository by running:
    
    ```bash
    git clone https://github.com/DIRGH712/geometry_engine.git
-5. Navigate into the cloned repository directory with cd `<repository-name>`.
+4. Change into the project directory:
+   ```bash
+   cd geometry_engine
 
-### Step 2: Create a `.env` File for Environment Variables
-1. Within the root of your cloned repository, create a file named `.env`.
-2. Open the `.env` file in a text editor and add the following line: `JWT_SECRET_KEY=your_jwt_secret_key_here`. Replace `your_jwt_secret_key_here` with a strong, unique secret key.
-3. Save and close the `.env` file.
-4. If you provide a `.env.example` file as a template, make sure it contains `JWT_SECRET_KEY=change_this_to_a_secure_key`.
+### Step 2: Set Up Your Environment
+1. Create a virtual environment (recommended) to isolate your project dependencies. Run:
+   ```bash
+   python -m venv venv
+2. Activate the virtual environment:
+- On macOS/Linux:
+   ```bash
+   source venv/bin/activate
+- On Windows:
+   ```bash
+   .\venv\Scripts\activate
+
+3. Create a `.env` file in the project root to store environment variables:
+- Use a text editor to create a new file named `.env`.
+- Add a line for the JWT secret key:
+  ```bash
+  JWT_SECRET_KEY= "your_jwt_secret_key_here"
+Replace `your_jwt_secret_key_here` with a strong, unique secret key.
 
 ### Step 3: Install Dependencies
-1. Ensure you are in the root directory of the cloned repository.
-2. Run `pip install -r requirements.txt` to install all the necessary packages listed in the `requirements.txt` file.
+- Ensure your virtual environment is activated, then install the project dependencies:
+  ```bash
+  JWT_SECRET_KEY= "your_jwt_secret_key_here"
 
-### Step 4: Running the Application
-1. Set the FLASK_APP environment variable to your application entry file, for example, export FLASK_APP=app.py on macOS/Linux or set FLASK_APP=app.py on Windows, where app.py is the file that initializes your Flask application.
-2. Run the application with a flask run. This command will start the Flask development server and make your application accessible at http://127.0.0.1:5000/ by default.
+### Step 4: Configure the Application
+1. Set the Flask application environment variable to point to your application's entry file. This tells Flask where to find your application.
+- On macOS/Linux:
+   ```bash
+   export FLASK_APP=app.py
+- On Windows:
+   ```bash
+   set FLASK_APP=app.py
+
+### Step 5: Run the Application
+1. Start the Flask development server by running:
+   ```bash
+   flask run
+2. Access the application by opening a web browser and navigating to `http://127.0.0.1:5000/`.
 
 # 🐳 Getting Started [The Docker Way!! - Bonus]
 
