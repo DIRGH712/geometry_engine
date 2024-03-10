@@ -6,7 +6,7 @@ Before importing this project to your Python workspace, it is necessary to make 
 2. Navigate to the directory where you want to clone the repository.
 3. Use the command
    ```bash
-   $ git clone https://github.com/DIRGH712/geometry_engine.git
+   git clone https://github.com/DIRGH712/geometry_engine.git
 5. Navigate into the cloned repository directory with cd `<repository-name>`.
 
 ### Step 2: Create a `.env` File for Environment Variables
