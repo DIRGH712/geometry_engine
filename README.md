@@ -41,8 +41,8 @@ Follow these steps to run the test cases on your local machine:
     python -m unittest tests/<test_file>.py
    
 # Endpoints
-NOTE: Postman can also be used for testing the following API's <br> 
-NOTE: Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and paste your URL, to view simple index.html <be>
+**NOTE:** Postman can also be used for testing the following API's <br> 
+**NOTE:** Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and paste your URL, to view simple index.html <be>
 
 ### 0. Login
 - **Endpoint:** `/login`
