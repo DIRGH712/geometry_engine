@@ -1,4 +1,4 @@
-# Getting Started [The Standard Way]
+# 🚀 Getting Started [The Standard Way]
 Before importing this project to your Python workspace, it is necessary to make sure the prerequisite steps are properly done in your development environment.
 
 ### Step 1: Clone the GitHub Repository
@@ -12,9 +12,9 @@ Before importing this project to your Python workspace, it is necessary to make 
 
 ### Step 2: Create a `.env` File for Environment Variables
 1. Within the root of your cloned repository, create a file named `.env`.
-2. Open the `.env` file in a text editor and add the following line: JWT_SECRET_KEY=your_jwt_secret_key_here. Replace _your_jwt_secret_key_here_ with a strong, unique secret key.
+2. Open the `.env` file in a text editor and add the following line: `JWT_SECRET_KEY=your_jwt_secret_key_here`. Replace `your_jwt_secret_key_here` with a strong, unique secret key.
 3. Save and close the `.env` file.
-4. If you provide a .env.example file as a template, make sure it contains JWT_SECRET_KEY=change_this_to_a_secure_key.
+4. If you provide a `.env.example` file as a template, make sure it contains `JWT_SECRET_KEY=change_this_to_a_secure_key`.
 
 ### Step 3: Install Dependencies
 1. Ensure you are in the root directory of the cloned repository.
@@ -22,29 +22,29 @@ Before importing this project to your Python workspace, it is necessary to make 
 
 ### Step 4: Running the Application
 1. Set the FLASK_APP environment variable to your application entry file, for example, export FLASK_APP=app.py on macOS/Linux or set FLASK_APP=app.py on Windows, where app.py is the file that initializes your Flask application.
-2. Run the application with flask run. This command will start the Flask development server and make your application accessible at http://127.0.0.1:5000/ by default.
+2. Run the application with a flask run. This command will start the Flask development server and make your application accessible at http://127.0.0.1:5000/ by default.
 
-# Getting Started [The Docker Way!! - Bonus]
+# 🐳 Getting Started [The Docker Way!! - Bonus]
 
 - Open terminal
 - Pull and use Docker image by running:
   
    ```bash
    docker pull pateldirgh/my-flask-app
-- Run the docker container using the given command, also if host:5000 doesn't work change the port to anything but 5000, I faced the same issue because macOS using port 5000 for AirPlay Receiver, or stop OS service from setting->general:
+- Run the docker container using the given command, also if host:5000 doesn't work change the port to anything but 5000, I faced the same issue because macOS using port 5000 for AirPlay Receiver, or stop OS service from `setting->general`:
 
    ```bash
   docker run -p 5000:5000 pateldirgh/my-flask-app
-- Copy and paste `http://127.0.0.1:5000` into the browser to check index.html, change port 5000 if needed.
+- Copy and paste `http://127.0.0.1:5000` into the browser to check `index.html`, and change port 5000 if needed.
 - Use Postman to or cURL Commands to test other APIs, and don't forget to authenticate.
 - Press `CTRL+C` to quit
 
-# Project Components
+# 🧩 Project Components
 - The routes used in this application can be found at `./modules/` which computes appropriate responses for requests made
-- A simple index.html page of _('/')_ route can be found in `./template/`
+- A simple `index.html` page of `/` route can be found in `./template/`
 - A suite of unit tests has been provided to ensure that the geometry engine operates correctly
 - `utils.py` has precision control code. This showcases the usage of DRY principles.
-- The file `requirements.txt` contains all the plugins used for the current application and the app.py file will be responsible for the application execution.
+- The file `requirements.txt` contains all the plugins used for the current application and the `app.py` file will be responsible for the application execution.
 
 
 ```
@@ -71,7 +71,7 @@ Project
 
 ```
 
-# Running the Test Cases
+# 🧪 Running the Test Cases
 Follow these steps to run the test cases on your local machine:
 - Python’s `unittest` framework provides a feature for automatic discovery of test cases. To use this feature and run all tests, navigate to the root directory of the project where the tests directory is located.
 - **Execute:**
@@ -81,9 +81,8 @@ Follow these steps to run the test cases on your local machine:
    ```bash
     python -m unittest tests/<test_file>.py
    
-# Endpoints
-**NOTE:** Postman can also be used for testing the following API's <br> 
-**NOTE:** Change _http://127.0.0.1:5000_ based on your Flask app. Also copy and paste your URL, to view simple index.html <be>
+# 🌍 Endpoints
+**NOTE:** Postman can also be used for testing the following APIs
 
 ### 0. Login [Bonus]
 - **Endpoint:** `/login`
@@ -183,10 +182,10 @@ Follow these steps to run the test cases on your local machine:
   }'
 
 
-# Implementation Choices and additional notes
+# 📝 Implementation Choices and additional notes
 
 ## For Computing the smallest Bounding Box
-In developing the geometric calculation endpoint, I initiated with the `compute_bounding_box` method, focusing on delivering a robust and straightforward solution for calculating the Axis-Aligned Bounding Box (AABB) for a given set of 3D points. This choice was made by several considerations, emphasizing the importance of efficiency, simplicity, and reliability in software engineering practices.
+In developing the geometric calculation endpoint, I initiated the `compute_bounding_box` method, focusing on delivering a robust and straightforward solution for calculating the Axis-Aligned Bounding Box (AABB) for a given set of 3D points. This choice was made by several considerations, emphasizing the importance of efficiency, simplicity, and reliability in software engineering practices.
 
 **Initial Choice Rationale:**
 
@@ -196,18 +195,18 @@ In developing the geometric calculation endpoint, I initiated with the `compute_
 
 3. **Broad Applicability:** Given the wide usage of AABB in various domains, such as computer graphics and collision detection, starting with a universally accepted and straightforward approach ensures the endpoint has a broad range of applicability right out of the gate.
 
-However, recognizing the potential for optimization, a common approach involves computing the convex hull of the set of points and then finding the minimum bounding box of this convex hull. Checkout `optimized_bounding_box.py` in `modules` directory.
+However, recognizing the potential for optimization, a common approach involves computing the convex hull of the set of points and then finding the minimum bounding box of this convex hull. Checkout `optimized_bounding_box.py` in the `modules` directory.
 
-**Implementation:**
+<ins>**Implementation:**</ins>
 
-- Compute the Convex Hull, I learned QuickHull and Gift wrapping algo.
+- Compute the Convex Hull (I learned QuickHull, Graham scan, and Gift wrapping algo.
 - To find the smallest bounding box, you can use the concept of an oriented bounding box (OBB). An OBB is not axis-aligned, meaning it can have any orientation in space. The OBB that has the minimum volume and contains the convex hull is the solution.
-- Perform PCA(Principal Component Analysis) on the set of points to find the principal axes. This can help us get more optimized bounding box.
+- Perform PCA(Principal Component Analysis) on the set of points to find the principal axes. This can help us get a more optimized bounding box.
 - Align the points with these axes.
 - Compute the bounding box in this aligned configuration for a rough (not necessarily minimal) estimate.
 - For the minimal volume box, iterate over all possible orientations (this requires discretizing the rotation space and is computationally expensive), compute the axis-aligned bounding box for the points in each orientation, and find the one with the smallest volume.
 
-# References:
+# 📚 References:
 
 Feel free to review some resources I used to make this project.
 
