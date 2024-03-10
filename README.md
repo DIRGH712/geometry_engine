@@ -4,8 +4,10 @@ Before importing this project to your Python workspace, it is necessary to make 
 ### Step 1: Clone the GitHub Repository
 1. Open your terminal or command prompt.
 2. Navigate to the directory where you want to clone the repository.
-3. Use the command `git clone <repository-url>`. Replace `<repository-url>` with the URL of this GitHub repo.
-4. Navigate into the cloned repository directory with cd `<repository-name>`.
+3. Use the command
+   ```bash
+   $ git clone https://github.com/DIRGH712/geometry_engine.git
+5. Navigate into the cloned repository directory with cd `<repository-name>`.
 
 ### Step 2: Create a `.env` File for Environment Variables
 1. Within the root of your cloned repository, create a file named `.env`.
