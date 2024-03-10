@@ -39,18 +39,10 @@ Before importing this project to your Python workspace, it is necessary to make 
 Replace `your_jwt_secret_key_here` with a strong, unique key.
 
 ### Step 5: Run the Application
-1. Set the Flask application environment variable to point to your application's entry file. This tells Flask where to find your application.
-- On macOS/Linux:
+1. To run the application use the following command.
    ```bash
-   export FLASK_APP=app.py
-- On Windows:
-   ```bash
-   set FLASK_APP=app.py
-
-2. Start the Flask development server by running:
-   ```bash
-   flask run
-3. Access the application by opening a web browser and navigating to `http://127.0.0.1:5000/`.
+   python3 app.py
+2. Access the application by opening a web browser and navigating to http://127.0.0.1:5000/.
 
 # 🐳 Getting Started [The Docker Way!! - Bonus]
 
