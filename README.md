@@ -17,7 +17,7 @@ Before importing this project to your Python workspace, it is necessary to make 
 ### Step 2: Set Up Your Environment
 1. Create a virtual environment (recommended) to isolate your project dependencies. Run:
    ```bash
-   python -m venv venv
+   python3 -m venv venv
 2. Activate the virtual environment:
 - On macOS/Linux:
    ```bash
@@ -26,19 +26,19 @@ Before importing this project to your Python workspace, it is necessary to make 
    ```bash
    .\venv\Scripts\activate
 
-3. Create a `.env` file in the project root to store environment variables:
-- Use a text editor to create a new file named `.env`.
-- Add a line for the JWT secret key:
-  ```bash
-  JWT_SECRET_KEY= "your_jwt_secret_key_here"
-Replace `your_jwt_secret_key_here` with a strong, unique secret key.
-
 ### Step 3: Install Dependencies
 - Ensure your virtual environment is activated, then install the project dependencies:
   ```bash
   pip install -r requirements.txt
 
-### Step 4: Configure the Application
+### Step 4:
+1. In the root directory of your project, create a `.env` file(Recommended to use IDE).
+2. Add a line for the JWT secret key:
+   ```bash
+   JWT_SECRET_KEY= "your_jwt_secret_key_here"
+Replace `your_jwt_secret_key_here` with a strong, unique key.
+
+### Step 5: Run the Application
 1. Set the Flask application environment variable to point to your application's entry file. This tells Flask where to find your application.
 - On macOS/Linux:
    ```bash
@@ -47,11 +47,10 @@ Replace `your_jwt_secret_key_here` with a strong, unique secret key.
    ```bash
    set FLASK_APP=app.py
 
-### Step 5: Run the Application
-1. Start the Flask development server by running:
+2. Start the Flask development server by running:
    ```bash
    flask run
-2. Access the application by opening a web browser and navigating to `http://127.0.0.1:5000/`.
+3. Access the application by opening a web browser and navigating to `http://127.0.0.1:5000/`.
 
 # 🐳 Getting Started [The Docker Way!! - Bonus]
 
