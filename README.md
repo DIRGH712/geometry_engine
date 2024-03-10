@@ -1,5 +1,37 @@
+# Project Components
+- The routes used in this application can be found at `./modules/` which computes appropriate responses for requests made
+- A simple index.html page of _('/')_ route can be found in `./template/`
+- A suite of unit tests has been provided to ensure that the geometry engine operates correctly
+- `utils.py` has precision control code. This showcases the usage of DRY principles.
+- The file `requirements.txt` contains all the plugins used for the current application and the app.py file will be responsible for the application execution.
+
+
+```
+Project
+├── geometry_engine
+│   ├── modules
+│   │   ├── bounding_box.py
+│   │   ├── check_convexity.py
+│   │   ├── get_centroid.py
+│   │   ├── move_mesh.py
+│   │   ├── optimized_bounding_box.py
+│   │   └── rotate_mesh.py
+│   └── templates
+│       └── index.html
+├── tests
+│   ├── test_bounding_box.py
+│   ├── test_centroid.py
+│   ├── test_convexity.py
+│   ├── test_move_mesh.py
+│   └── test_rotate_mesh.py
+├── utils
+├── app.py
+└── README.md
+
+```
+
 # Running the Test Cases
-A suite of unit tests has been provided to ensure that the geometry engine operates correctly. Follow these steps to run the test cases on your local machine:
+Follow these steps to run the test cases on your local machine:
 - Python’s `unittest` framework provides a feature for automatic discovery of test cases. To use this feature and run all tests, navigate to the root directory of the project where the tests directory is located.
 - **Execute:**
    ```bash
